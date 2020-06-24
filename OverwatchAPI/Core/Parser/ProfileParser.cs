@@ -91,7 +91,7 @@ namespace OverwatchAPI.Parser
 
         private static ushort EndorsementLevel(IHtmlDocument doc)
         {
-            ushort.TryParse(doc.QuerySelector("div.endorsement-level div.u-center")?.TextContent, out ushort parsedEndorsementLevel);
+            ushort.TryParse(doc.QuerySelector("div.EndorsementIcon-tooltip div.u-center")?.TextContent, out ushort parsedEndorsementLevel);
             return parsedEndorsementLevel;
         }
 
@@ -194,7 +194,7 @@ namespace OverwatchAPI.Parser
             {
                 var catId = section.GetAttribute("data-category-id");
                 var heroName = idDictionary[catId];
-                foreach (var table in section.QuerySelectorAll($"div[data-category-id='{catId}'] table.DataTable"))
+                foreach (var table in section.QuerySelectorAll($"table.DataTable"))
                 {
                     var catName = table.QuerySelector("thead").TextContent;
                     foreach (var row in table.QuerySelectorAll("tbody tr"))
